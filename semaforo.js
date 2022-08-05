@@ -9,29 +9,44 @@ var YellowInterval;
 var RedInterval;
 
 auto.addEventListener("click", () => {
-    GreenInterval = setInterval(() => {img.src="./img/verde.png"},1000);
-    YellowInterval = setInterval(() => {img.src="./img/amarelo.png"},2000);
-    RedInterval = setInterval(() => {img.src="./img/vermelho.png"},3000);    
-    GreenInterval = setInterval(() => {img.src="./img/verde.png"},4000);
+    function startTrafficSignal () {
+        GreenInterval = setTimeout(function () {
+            img.src="./img/verde.png"
+        },2000);
+    
+        YellowInterval = setTimeout(function () {
+            img.src="./img/amarelo.png"
+        },5000);
+    
+        RedInterval = setTimeout(function () {
+            img.src="./img/vermelho.png"
+        },8000);
+    }
+
+    setInterval(function () {
+        startTrafficSignal();
+    },12000);
+    
+    startTrafficSignal();
 });
 
 red.addEventListener("click", () => {
     img.src="./img/vermelho.png";
-    clearInterval(GreenInterval);
-    clearInterval(YellowInterval);
-    clearInterval(RedInterval);
+    clearTimeout(GreenInterval);
+    clearTimeout(YellowInterval);
+    clearTimeout(RedInterval);
 });
 
 yellow.addEventListener("click", () => {
     img.src="./img/amarelo.png";
-    clearInterval(GreenInterval);
-    clearInterval(YellowInterval);
-    clearInterval(RedInterval);
+    clearTimeout(GreenInterval);
+    clearTimeout(YellowInterval);
+    clearTimeout(RedInterval);
 });
 
 green.addEventListener("click", () => {
     img.src="./img/verde.png";
-    clearInterval(GreenInterval);
-    clearInterval(YellowInterval);
-    clearInterval(RedInterval);
+    clearTimeout(GreenInterval);
+    clearTimeout(YellowInterval);
+    clearTimeout(RedInterval);
 });
